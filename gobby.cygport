@@ -1,8 +1,8 @@
 inherit gnome2
 
 NAME="gobby"
-VERSION=0.4.94
-RELEASE=2
+VERSION=0.4.13
+RELEASE=1
 CATEGORY="Editors"
 SUMMARY="GTK+ collaborative text editor"
 DESCRIPTION="Gobby is a free collaborative editor. This means that it provides
@@ -12,10 +12,8 @@ desktop environment."
 HOMEPAGE="http://gobby.0x539.de/"
 SRC_URI="http://releases.0x539.de/gobby/gobby-${VERSION}.tar.gz"
 PATCH_URI="
-	http://pkgs.fedoraproject.org/cgit/gobby05.git/plain/0001-Fix-build-against-recent-gtkmm3-versions.patch
-	http://pkgs.fedoraproject.org/cgit/gobby05.git/plain/0001-create-directories-with-mode-0700-Debian-bug-636015.patch
-	http://pkgs.fedoraproject.org/cgit/gobby05.git/plain/0002-code-util-gtk-compat.hpp-fix-render_icon-with-missin.patch
-	http://pkgs.fedoraproject.org/cgit/gobby05.git/plain/gobby-0.4.94-includes.patch
+	0.4.13-cygwin-compile.patch
+	0.4.13-vpath.patch
 "
 
-CYGCONF_ARGS="--with-gtk3"
+CYGCONF_ARGS="--with-gnome --with-gtkspell"

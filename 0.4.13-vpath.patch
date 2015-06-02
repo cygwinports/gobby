@@ -1,0 +1,21 @@
+--- origsrc/gobby-0.4.13/Makefile.am	2012-01-29 18:27:51.000000000 -0600
++++ src/gobby-0.4.13/Makefile.am	2015-06-01 20:35:26.548332900 -0500
+@@ -9,7 +9,7 @@ bin_PROGRAMS = gobby
+ 
+ gobby_LDADD     = $(gobby_LIBS) $(gtksourceview_LIBS)
+ gobby_CPPFLAGS  = $(gobby_CFLAGS) $(gtksourceview_CFLAGS)
+-gobby_CPPFLAGS += -I../inc/ -DLOCALE_DIR=\""$(datadir)/locale"\" \
++gobby_CPPFLAGS += -I$(top_srcdir)/inc/ -DLOCALE_DIR=\""$(datadir)/locale"\" \
+ 	-DICONS_DIR=\""$(pkgdatadir)/icons"\"
+ 
+ if WITH_AVAHI
+@@ -126,6 +126,9 @@ desktopdir = $(datadir)/applications
+ desktop_in_files = contrib/gobby.desktop.in
+ desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
+ @INTLTOOL_DESKTOP_RULE@
++$(desktop_DATA): $(abs_top_builddir)/contrib
++$(abs_top_builddir)/contrib:
++	mkdir -p $@
+ endif
+ 
+ EXTRA_DIST =  contrib/artwork/CREDITS
